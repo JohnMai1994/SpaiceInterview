@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect, useState} from "react";
+import User from "./components/user";
+import Price from "./components/price";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [result, setResult] = useState(
+        {
+            "users": [],
+            "images": [],
+            "coordinates": {},
+            "price": "0"
+        });
+
+
+    useEffect(() => {
+        fetch(" https://bs-random-json.vercel.app/api/data")
+            .then(res => res.json())
+            .then(result => setResult(result)
+            )
+    }, [])
+
+
+    return (
+        <div>
+
+
+            <User users={result.users}/>
+            <Price price={result.price}/>
+
+
+        </div>
+    );
 }
 
 export default App;
