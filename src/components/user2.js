@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components"
+import React , {useState, useEffect} from "react";
+import styled from "styled-components";
 import User1 from "./imges/pexels-ali-pazani-2777898.jpg"
 import User2 from "./imges/pexels-anna-shvets-3851571.jpg"
 import User3 from "./imges/pexels-anush-gorak-1431283.jpg"
@@ -55,13 +55,8 @@ const PopInfo = styled.div`
     transform: translateY(40px);
     opacity: 0;
     
-    span{
-      line-height: 2em;
-          
-    }
     
     
-
 `
 
 const Disappear = styled.div`
@@ -125,6 +120,8 @@ const Img = styled.img`
 
 
 const Info = styled.div`
+
+
     color: black;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -143,81 +140,90 @@ const Info = styled.div`
 
 `
 
+const Input = styled.input`
+    margin: 0;
+    border: 0;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.1em;
+    outline: none;
+`
 
-const Users = (users) => {
-    const usersArray = users.users
+const Input2 = styled.input`
+    margin: 0;
+    border: 0;
+    color: black;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.1em;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: initial;
+    outline: none;
+
+`
+
+const Input3 = styled.input`
+    width: auto;
+    color: #180000;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 15px;
+    text-align: center;
+    border: 0;
+    margin: 0;
+    outline: none;
+    line-height: 1.1em;
+
+`
+
+const Users2 = (users) => {
+    let usersArray = users.users;
+
     return <UsersStyle>
-
 
         {
             usersArray.map((item, index) => {
-                return (<UserStyle>
-                    <Content>
-                        <ImgBox>
-                            <Img src={ImgMap[index]}/>
-                        </ImgBox>
-                        <Info>{item.name}<br/>
-                            <span>
-                            {item.dob}
-                        </span><br/>
-                            <span>
-                            {item.work}
-                        </span>
-                        </Info>
 
-                        <PopInfo>
-                            {item.email}<br/>
-                            <span>
-                            {item.address}, {item.city}
-                            </span>
-                            <br/>
-                        </PopInfo>
-
-                        <Disappear>
-                            ID: {item.id}
-                            <br/>
-                            {item.optedin ? "True" : "False"}
+                return (
 
 
-                        </Disappear>
+                    <UserStyle>
+                        <Content>
+                            <ImgBox>
+                                <Img src={ImgMap[index]}/>
+                            </ImgBox>
 
-                    </Content>
+                            <Info>
+                                <Input  type="text" placeholder="Your Name.." defaultValue={item.name} />
+                                <br/>
+                                <Input2 type="text" placeholder={"Birth Year.."} defaultValue={item.dob}/>
+                                <br/>
+                                <Input2 type="text" placeholder={"Position"} defaultValue={item.work}/>
+                            </Info>
 
-                </UserStyle>)
+                            <PopInfo>
+                                <Input3 type="text" placeholder="Your Email.." defaultValue={item.email} />
+                                <br/>
+                                <Input3 type="text" placeholder="Your Address.." defaultValue={item.address} />
+                                <br/>
+                            </PopInfo>
 
+                            <Disappear>
+                                ID: {item.id}
+                                <br/>
+                                {item.optedin ? "True" : "False"}
+                            </Disappear>
+                        </Content>
+
+                    </UserStyle>
+                )
             })
-
         }
-
-
-        {/*<UserStyle>*/}
-        {/*    <Content>*/}
-        {/*        <ImgBox>*/}
-        {/*            <Img src={User1}/>*/}
-        {/*        </ImgBox>*/}
-        {/*        <Info>Jiadong Mai <br/>*/}
-        {/*            <span>1994</span>*/}
-        {/*            <br/>*/}
-        {/*            <span>Software Developer</span>*/}
-
-        {/*        </Info>*/}
-
-        {/*        <PopInfo>*/}
-        {/*            heath.miers@foretrust.mobi <br/>*/}
-        {/*            <span>*/}
-        {/*                20 Glendale Road, Detroit*/}
-        {/*            </span>*/}
-        {/*            <br/>*/}
-        {/*        </PopInfo>*/}
-
-        {/*        <Disappear>*/}
-        {/*            ID: 5*/}
-
-        {/*        </Disappear>*/}
-
-        {/*    </Content>*/}
-        {/*</UserStyle>*/}
-
 
     </UsersStyle>
 
@@ -225,4 +231,4 @@ const Users = (users) => {
 }
 
 
-export default Users;
+export default Users2;

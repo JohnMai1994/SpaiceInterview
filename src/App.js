@@ -1,7 +1,10 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
-import User from "./components/user";
+import Users from "./components/user";
 import Price from "./components/price";
+
+
+import Users2 from "./components/user2";
 
 
 function App() {
@@ -25,8 +28,12 @@ function App() {
     return (
         <div>
 
+            {/*V1*/}
+            {/*<Users users={result.users}/>*/}
 
-            <User users={result.users}/>
+            {/*V2*/}
+            <Users2 users={result.users}/>
+
             <Price price={result.price}/>
 
 
