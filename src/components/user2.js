@@ -184,10 +184,38 @@ const Input3 = styled.input`
 const Users2 = (users) => {
     let usersArray = users.users;
 
+    const [target, setTarget] = useState(usersArray);
+
+
+    useEffect(() => {
+
+        if (target.length === 0) {
+            console.log("init data")
+            setTarget(usersArray)
+        } else {
+            console.log("Hi there")
+        }
+
+    });
+
+
+    const changeTarget = (target, value, index, key1) => {
+        const newTarget = target.map((x, i) => {
+            if (i === index) {
+                x[key1] = value;
+                return  x;
+            }
+            return x;
+            }
+        );
+        setTarget(newTarget);
+    }
+
+
     return <UsersStyle>
 
         {
-            usersArray.map((item, index) => {
+            target.map((item, index) => {
 
                 return (
 
@@ -199,17 +227,17 @@ const Users2 = (users) => {
                             </ImgBox>
 
                             <Info>
-                                <Input  type="text" placeholder="Your Name.." defaultValue={item.name} />
+                                <Input  type="text" placeholder="Your Name.." value={item.name} onChange={e => changeTarget(target, e.target.value, index, "name")}/>
                                 <br/>
-                                <Input2 type="text" placeholder={"Birth Year.."} defaultValue={item.dob}/>
+                                <Input2 type="text" placeholder={"Birth Year.."} value={item.dob} onChange={e => changeTarget(target, e.target.value, index, "dob")}/>
                                 <br/>
-                                <Input2 type="text" placeholder={"Position"} defaultValue={item.work}/>
+                                <Input2 type="text" placeholder={"Position"} value={item.work} onChange={e => changeTarget(target, e.target.value, index, "work")}/>
                             </Info>
 
                             <PopInfo>
-                                <Input3 type="text" placeholder="Your Email.." defaultValue={item.email} />
+                                <Input3 type="text" placeholder="Your Email.." defaultValue={item.email} onChange={e => changeTarget(target, e.target.value, index, "email")}/>
                                 <br/>
-                                <Input3 type="text" placeholder="Your Address.." defaultValue={item.address} />
+                                <Input3 type="text" placeholder="Your Address.." defaultValue={item.address} onChange={e => changeTarget(target, e.target.value, index, "address")} />
                                 <br/>
                             </PopInfo>
 

@@ -12,12 +12,4 @@ Spaice Software Engineer Test
     
 - Summary
     
-    This project is `JSON Display`, I add some fancy animation and CSS style to make it pretty.
-    
-    In this program, I mainly use style-component this lib to code my CSS style. I use fetch and React Hook to set initial data
-    
-    If I have more time, I will try to make this to `JSON Editor`
-    
-- Update
-    
-    Right Now, We can edit the JSON file at the front-end website
+    This project is `JSON Editor`, I add some fancy animation and CSS style to make it pretty.

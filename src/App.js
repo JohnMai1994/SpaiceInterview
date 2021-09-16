@@ -18,7 +18,7 @@ function App() {
 
 
     useEffect(() => {
-        fetch(" https://bs-random-json.vercel.app/api/data")
+        fetch("https://bs-random-json.vercel.app/api/data")
             .then(res => res.json())
             .then(result => setResult(result)
             )
@@ -32,7 +32,7 @@ function App() {
             {/*<Users users={result.users}/>*/}
 
             {/*V2*/}
-            <Users2 users={result.users}/>
+            <Users2 users={result.users} />
 
             <Price price={result.price}/>
 
